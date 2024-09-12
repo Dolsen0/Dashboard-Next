@@ -1,7 +1,8 @@
-import { Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
+import Sidebar from "./components/Sidebar";
 
-const inter = Inter({ subsets: ["latin"] });
+const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +12,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`flex ${openSans.className}`}>
+        <Sidebar />
+        {/* Ensure all content is pushed to the right of the sidebar */}
+        <div className="ml-64 flex-1 bg-gray-100">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
